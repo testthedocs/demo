@@ -16,7 +16,6 @@ jobs:
       - checkout
       - run:
           command: |
-              cd project/docs
               /usr/local/bin/repo-rst.sh
 
   "toctree-check":
@@ -26,7 +25,9 @@ jobs:
       - checkout
       - run:
           command: |
-            /usr/local/bin/testtoctree.sh
+            pwd
+            ls -la
+            #/usr/local/bin/testtoctree.sh
 
   "html":
     docker:
