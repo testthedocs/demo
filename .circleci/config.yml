@@ -27,7 +27,8 @@ jobs:
           command: |
             pwd
             ls -la
-            #/usr/local/bin/testtoctree.sh
+            cd docs
+            /usr/local/bin/testtoctree.sh
 
   "html":
     docker:
