@@ -16,6 +16,7 @@ jobs:
       - checkout
       - run:
           command: |
+              cd project/docs
               /usr/local/bin/repo-rst.sh
 
   "toctree-check":
