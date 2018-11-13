@@ -4,7 +4,7 @@ Demo
 
 A repository to showcase `Rapart <https://rapkaprt.testthedocs.org/>`_.
 
-Tested with `CircleCI <https://circleci.com>` and hosted by `Netily <https://netlify.com>`_ on https://laughing-booth-4e77b6.netlify.com.
+Tested with `CircleCI <https://circleci.com>`_ and hosted by `Netily <https://netlify.com>`_ on https://laughing-booth-4e77b6.netlify.com.
 
 Contribute
 ==========
