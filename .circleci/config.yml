@@ -18,7 +18,7 @@ jobs:
           command: |
               /usr/local/bin/repo-rst.sh
 
-  "toctree-check"
+  "toctree-check":
     docker:
       - image: testthedocs/ttd-toctree
     steps:
