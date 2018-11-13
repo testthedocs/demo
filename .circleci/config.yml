@@ -1,0 +1,46 @@
+version: 2.0
+
+general:
+  branches:
+    only:
+      - master
+
+defaults: &defaults
+  working_directory: ~/sphinx
+
+jobs:
+  "html":
+    docker:
+      - image: testthedocs/ttd-sphinx
+    <<: *defaults
+    steps:
+      - checkout
+      - run:
+          command: |
+              sphinx-build -c docs -b html docs docs/_build/html
+
+      - persist_to_workspace:
+          root: ~/sphinx/docs
+          paths:
+            - _build/html
+
+  "deploy site":
+    docker:
+      - image: testthedocs/ttd-zipcurl
+        #<<: *defaults
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ~/sphinx/html
+      - run:
+          command: |
+              .circleci/deploy.sh
+
+workflows:
+  version: 2
+  btd:
+    jobs:
+      - "html"
+      - "deploy site":
+          requires:
+             - "html"
