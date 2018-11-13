@@ -36,6 +36,7 @@ jobs:
               sphinx-build -c docs -b html docs docs/_build/html
             else
               echo "no changes"
+              exit 0
             fi
 
       - persist_to_workspace:
