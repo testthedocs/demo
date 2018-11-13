@@ -9,7 +9,7 @@ defaults: &defaults
   working_directory: ~/sphinx
 
 jobs:
-  "repo-check":
+  "repo":
     docker:
       - image: testthedocs/ttd-repo
     steps:
@@ -26,17 +26,7 @@ jobs:
       - checkout
       - run:
           command: |
-            # latest commit
-            LATEST_COMMIT=$(git rev-parse HEAD)
-
-            # latest commit where packages/material-ui-icons was changed
-            FOLDER_COMMIT=$(git log -1 --format=format:%H --full-diff docs)
-            if [ $FOLDER_COMMIT = $LATEST_COMMIT ]; then
-              echo "changes, let's run the tests on docs"
               sphinx-build -c docs -b html docs docs/_build/html
-            else
-              echo "no changes"
-            fi
 
       - persist_to_workspace:
           root: ~/sphinx/docs
@@ -59,7 +49,7 @@ workflows:
   version: 2
   btd:
     jobs:
-      - "repo-check"
+      - "repo"
       - "html"
       - "deploy site":
           requires:
