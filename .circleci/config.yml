@@ -9,6 +9,15 @@ defaults: &defaults
   working_directory: ~/sphinx
 
 jobs:
+  "repo":
+    docker:
+      - image: testthedocs/ttd-repo
+    steps:
+      - checkout
+      - run:
+          command: |
+              /usr/local/bin/repo-rst.sh
+
   "html":
     docker:
       - image: testthedocs/ttd-sphinx
@@ -40,6 +49,7 @@ workflows:
   version: 2
   btd:
     jobs:
+      - "repo"
       - "html"
       - "deploy site":
           requires:
