@@ -4,7 +4,7 @@ Demo
 
 Writing documentation is hard, testing and checking is even harder.
 
-Testing is fun!
+Testing ....
 
 The main focus is CI (Continuous Integration).
 
